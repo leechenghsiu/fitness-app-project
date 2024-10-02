@@ -1,4 +1,8 @@
+// eslint-disable-next-line
 export default {
-	login: '/login',
 	homepage: '/',
+	challenge: '/challenge',
+	new: '/new',
+	market: '/market',
+	profile: '/profile',
 };

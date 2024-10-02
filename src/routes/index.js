@@ -2,17 +2,14 @@ import React from 'react';
 import { HashRouter, BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import history from 'store/history';
-
-import App from 'layouts/App';
-
 import routePath from 'constants/path';
-
 import ProtectedRoute from 'utils/hoc/ProtectedRoute';
-
+import App from 'layouts/App';
 import { HomePage } from 'layouts/Home';
-import { LoginPage } from 'layouts/Login';
+import { ProfilePage } from 'layouts/Profile';
 
 import Header from 'components/organisms/Header';
+import Navigation from 'components/organisms/Navigation';
 
 function RouterWrapper({ children }) {
 	return process.env.NODE_ENV !== 'production' ? (
@@ -30,18 +27,19 @@ function AppRoutes() {
 			<App>
 				{/* Navbar */}
 				<Header />
+				<Navigation />
 
 				{/* Routes */}
 				<Routes>
 					{/* Non-protected - Anyone has access */}
-					<Route path={routePath.login} element={<LoginPage />} />
+					<Route path={routePath.homepage} element={<HomePage />} />
 
 					{/* Protected - Needs to login */}
 					<Route
-						path={routePath.homepage}
+						path={routePath.profile}
 						element={
 							<ProtectedRoute>
-								<HomePage />
+								<ProfilePage />
 							</ProtectedRoute>
 						}
 					/>
